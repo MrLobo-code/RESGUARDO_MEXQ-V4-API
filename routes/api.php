@@ -19,3 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Route::get('/jokes', 'JokeController@getRandomJoke');
+Route ::get('json/equipos', function () {
+    $equipos = App\Models\equipos::all();
+    return response()->json($equipos);
+});
