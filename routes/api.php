@@ -19,7 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Route::get('/jokes', 'JokeController@getRandomJoke');
-Route ::get('json/equipos', function () {
+Route::get('/json/equipos', function () {
     $equipos = App\Models\equipos::all();
+    // dd($equipos); Aqui esta linea me ayuda a ver exactamente que es lo que se está retornando a mi app antes de que se retorne
     return response()->json($equipos);
 });

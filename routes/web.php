@@ -16,8 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-// Route ::get('json/equipos', function () {
-//     $equipos = App\Models\equipos::all();
-//     return response()->json($equipos);
-// });
