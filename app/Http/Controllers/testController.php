@@ -9,8 +9,6 @@ class testController extends Controller
 {
     public function equipos(Request $request)
     {
-        // $equipos = DB::table("equipos")->get();
-        // return response()->json($equipos);
         $equipos = equipos::all();
         return response()->json($equipos,200);
     }
