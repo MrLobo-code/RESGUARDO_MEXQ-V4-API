@@ -27,4 +27,6 @@ class equipos extends Model
         'proveedor',
         'estado'
     ];
+
+    public $timestamps = false;
 }
