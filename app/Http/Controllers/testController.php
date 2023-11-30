@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\equipos;
+use Illuminate\Http\Request;
+
 // use Illuminate\Http\Request;
 
 class testController extends Controller
@@ -47,5 +49,32 @@ class testController extends Controller
             'estado' => '121212121212',
         ]);
         $new_equipo->save();
+    }
+
+    function createEquipo(Request $request)
+    {
+        $new_equipo = new equipos;
+        $new_equipo->fill([
+            'codigo' => $request->codigo,
+            'nomina' => $request->nomina,
+            'nombre' => $request->nombre,
+            'sucursal' => $request->sucursal,
+            'area' => $request->area,
+            'marca' => $request->marca,
+            'modelo' => $request->modelo,
+            'no_serie' => $request->no_serie,
+            'fecha' => $request->fecha,
+            'no_factura' => $request->no_factura,
+            'proveedor' => $request->proveedor,
+            'estado' => $request->estado,
+        ]);
+        $new_equipo->save();
+
+        return response()->json(
+            [
+                'message' => 'Todo Chido padrino !!',
+            ],
+            404
+        );
     }
 }

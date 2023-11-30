@@ -32,7 +32,6 @@ Route::get('/json/equipos', function () {
     return $newEquipo->equipos();
 });
 
-Route::get('/json/addreg', function () {
-    $newEquipo = new testController;
-    return $newEquipo->saveEquipo();
-});
+Route::get('/json/addreg', [App\Http\Controllers\testController::class, 'saveEquipo']);
+Route::post('/equipos/create', [App\Http\Controllers\testController::class, 'createEquipo']);
+Route::get('/equipos/get', [App\Http\Controllers\testController::class, 'createEquipo']);
