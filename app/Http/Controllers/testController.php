@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\equipos;
 use Illuminate\Http\Request;
+use App\Models\equipo;
 
 // use Illuminate\Http\Request;
 
@@ -53,21 +54,49 @@ class testController extends Controller
 
     function createEquipo(Request $request)
     {
-        $new_equipo = new equipos;
-        $new_equipo->fill([
-            'codigo' => $request->codigo,
-            'nomina' => $request->nomina,
-            'nombre' => $request->nombre,
-            'sucursal' => $request->sucursal,
-            'area' => $request->area,
-            'marca' => $request->marca,
-            'modelo' => $request->modelo,
-            'no_serie' => $request->no_serie,
-            'fecha' => $request->fecha,
-            'no_factura' => $request->no_factura,
-            'proveedor' => $request->proveedor,
-            'estado' => $request->estado,
-        ]);
+        $campos = $request->input('campos');
+
+        $valores = explode(' - ', $campos);
+
+        $new_equipo = new equipo;
+        // $new_equipo->fill([
+        //     'codigo' => $request->codigo,
+        //     'nomina' => $request->nomina,
+        //     'phone' => $request->phone,
+        //     'name' => $request->name,
+        //     'puesto' => $request->puesto,
+        //     'email' => $request->email,
+        //     'sucursal' => $request->sucursal,
+        //     'planta_depto' => $request->planta_depto,
+        //     'type' => $request->type,
+        //     'status' => $request->status,
+        //     'brand' => $request->brand,
+        //     'model' => $request->model,
+        //     'serial_number' => $request->serial_number,
+        //     'product_number' => $request->product_number,
+        //     'bill_number' => $request->bill_number,
+        //     'fecha' => $request->fecha,
+        //     'provider' => $request->provider,
+        //     'comments' => $request->comments,
+        // ]);
+        $new_equipo-> codigo = $valores[0];
+        $new_equipo-> nomina = $valores[1];
+        $new_equipo-> phone = $valores[2];
+        $new_equipo-> name = $valores[3];
+        $new_equipo-> puesto = $valores[4];
+        $new_equipo-> email = $valores[5];
+        $new_equipo-> sucursal = $valores[6];
+        $new_equipo-> planta_depto = $valores[7];
+        $new_equipo-> type = $valores[8];
+        $new_equipo-> status = $valores[9];
+        $new_equipo-> brand = $valores[10];
+        $new_equipo-> model = $valores[11];
+        $new_equipo-> serial_number = $valores[12];
+        $new_equipo-> product_number = $valores[13];
+        $new_equipo-> bill_number = $valores[14];
+        $new_equipo-> fecha = $valores[15];
+        $new_equipo-> provider = $valores[16];
+        $new_equipo-> comments = $valores[17];
         $new_equipo->save();
 
         return response()->json(
