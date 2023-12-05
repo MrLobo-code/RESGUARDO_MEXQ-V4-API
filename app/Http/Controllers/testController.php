@@ -52,11 +52,11 @@ class testController extends Controller
         $new_equipo->save();
     }
 
-    function createEquipo(Request $request)
+    public function createEquipo(Request $request)
     {
-        $campos = $request->input('campos');
-
-        $valores = explode(' - ', $campos);
+        $campos = $request;
+        // dd($campos);
+        // $valores = explode(' - ', $campos);
 
         $new_equipo = new equipo;
         // $new_equipo->fill([
@@ -79,31 +79,31 @@ class testController extends Controller
         //     'provider' => $request->provider,
         //     'comments' => $request->comments,
         // ]);
-        $new_equipo-> codigo = $valores[0];
-        $new_equipo-> nomina = $valores[1];
-        $new_equipo-> phone = $valores[2];
-        $new_equipo-> name = $valores[3];
-        $new_equipo-> puesto = $valores[4];
-        $new_equipo-> email = $valores[5];
-        $new_equipo-> sucursal = $valores[6];
-        $new_equipo-> planta_depto = $valores[7];
-        $new_equipo-> type = $valores[8];
-        $new_equipo-> status = $valores[9];
-        $new_equipo-> brand = $valores[10];
-        $new_equipo-> model = $valores[11];
-        $new_equipo-> serial_number = $valores[12];
-        $new_equipo-> product_number = $valores[13];
-        $new_equipo-> bill_number = $valores[14];
-        $new_equipo-> fecha = $valores[15];
-        $new_equipo-> provider = $valores[16];
-        $new_equipo-> comments = $valores[17];
-        $new_equipo->save();
+        $new_equipo -> codigo = $campos->codigo;
+        $new_equipo -> nomina = $campos->nomina;
+        $new_equipo -> phone = $campos->phone;
+        $new_equipo -> name = $campos->name;
+        $new_equipo -> puesto = $campos->puesto;
+        $new_equipo -> email = $campos->email;
+        $new_equipo -> sucursal = $campos->sucursal;
+        $new_equipo -> planta_depto = $campos->planta_depto;
+        $new_equipo -> type = $campos->type;
+        $new_equipo -> status = $campos->status;
+        $new_equipo -> brand = $campos->brand;
+        $new_equipo -> model = $campos->model;
+        $new_equipo -> serial_number = $campos->serial_number;
+        $new_equipo -> product_number = $campos->product_number;
+        $new_equipo -> bill_number = $campos->bill_number;
+        $new_equipo -> fecha = $campos->fecha;
+        $new_equipo -> provider = $campos->provider;
+        $new_equipo -> comments = $campos->comments;
+        $new_equipo ->save();
 
         return response()->json(
             [
                 'message' => 'Todo Chido padrino !!',
             ],
-            404
+            200
         );
     }
 }
