@@ -1,3 +1,32 @@
+Instalación:
+    - Instalar PHP 8.0 o posterior.
+    - Instalar composer
+    - Instalar drivers para PHP 8.0
+    
+Versión de nts: 
+    - php_sqlsrv_82_nts_x64.dll
+    - php_pdo_sqlsrv_82_nts_x64.dll
+    
+Versión ts: 
+    - php_sqlsrv_82_ts_x64.dll
+    - php_pdo_sqlsrv_82_ts_x64.dll
+
+Descargar los drivers en la carpeta ext de eldirectorio raís de PHP.
+
+Descomentay y/o agregar los nombers de los controladores en el archivo de configuración php.ini en el directorio raís de PHP.
+    -extension=php_sqlsrv_82_ts_x64.dll
+    -extension=php_pdo_sqlsrv_82_ts_x64.dll
+
+instalar dependencias: 
+    -Ejecutar en terminal: composer install
+
+Ubucarse en el directorio de la api y ejecutar el siguiente comando para inicializar el servidor:
+    php artisan serve
+O en su lugar, ejecutar lo siguiente para aceptar conexiónes de APPs desde cualquier dirección:
+    php artisan serve --host=0.0.0.0
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
