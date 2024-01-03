@@ -11,9 +11,9 @@ Versión ts:
     - php_sqlsrv_82_ts_x64.dll
     - php_pdo_sqlsrv_82_ts_x64.dll
 
-Descargar los drivers en la carpeta ext de eldirectorio raís de PHP.
+Descargar los drivers en la carpeta ext de el directorio raís de PHP.
 
-Descomentay y/o agregar los nombers de los controladores en el archivo de configuración php.ini en el directorio raís de PHP.
+Descomentar y/o agregar los nombres de los controladores en el archivo de configuración php.ini en el directorio raís de PHP.
     -extension=php_sqlsrv_82_ts_x64.dll
     -extension=php_pdo_sqlsrv_82_ts_x64.dll
 
