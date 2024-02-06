@@ -58,7 +58,8 @@ class testController extends Controller
         // dd($campos);
         // $valores = explode(' - ', $campos);
 
-        $new_equipo = new equipo;
+        $new_equipo = new equipos;
+        
         // $new_equipo->fill([
         //     'codigo' => $request->codigo,
         //     'nomina' => $request->nomina,
@@ -79,25 +80,39 @@ class testController extends Controller
         //     'provider' => $request->provider,
         //     'comments' => $request->comments,
         // ]);
-        $new_equipo -> codigo = $campos->codigo;
-        $new_equipo -> nomina = $campos->nomina;
-        $new_equipo -> phone = $campos->phone;
-        $new_equipo -> name = $campos->name;
-        $new_equipo -> puesto = $campos->puesto;
-        $new_equipo -> email = $campos->email;
-        $new_equipo -> sucursal = $campos->sucursal;
-        $new_equipo -> planta_depto = $campos->planta_depto;
-        $new_equipo -> type = $campos->type;
-        $new_equipo -> status = $campos->status;
-        $new_equipo -> brand = $campos->brand;
-        $new_equipo -> model = $campos->model;
-        $new_equipo -> serial_number = $campos->serial_number;
-        $new_equipo -> product_number = $campos->product_number;
-        $new_equipo -> bill_number = $campos->bill_number;
-        $new_equipo -> fecha = $campos->fecha;
-        $new_equipo -> provider = $campos->provider;
-        $new_equipo -> comments = $campos->comments;
-        $new_equipo ->save();
+        // $new_equipo->codigo = $campos->codigo;
+        // $new_equipo->nomina = $campos->nomina;
+        // $new_equipo->phone = $campos->phone;
+        // $new_equipo->name = $campos->name;
+        // $new_equipo->puesto = $campos->puesto;
+        // $new_equipo->email = $campos->email;
+        // $new_equipo->sucursal = $campos->sucursal;
+        // $new_equipo->planta_depto = $campos->planta_depto;
+        // $new_equipo->type = $campos->type;
+        // $new_equipo->status = $campos->status;
+        // $new_equipo->brand = $campos->brand;
+        // $new_equipo->model = $campos->model;
+        // $new_equipo->serial_number = $campos->serial_number;
+        // $new_equipo->product_number = $campos->product_number;
+        // $new_equipo->bill_number = $campos->bill_number;
+        // $new_equipo->fecha = $campos->fecha;
+        // $new_equipo->provider = $campos->provider;
+        // $new_equipo->comments = $campos->comments;
+
+        $new_equipo->codigo = $campos->codigo;
+        $new_equipo->nomina = $campos->nomina;
+        $new_equipo->nombre = $campos->nombre;
+        $new_equipo->sucursal = $campos->sucursal;
+        $new_equipo->area = $campos->area;
+        $new_equipo->marca = $campos->marca;
+        $new_equipo->modelo = $campos->modelo;
+        $new_equipo->no_serie = $campos->no_serie;
+        $new_equipo->fecha = $campos->fecha;
+        $new_equipo->no_factura = $campos->no_factura;
+        $new_equipo->proveedor = $campos->proveedor;
+        $new_equipo->estado = $campos->estado;
+        
+        $new_equipo->save();
 
         return response()->json(
             [
