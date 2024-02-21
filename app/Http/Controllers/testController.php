@@ -52,6 +52,24 @@ class testController extends Controller
         $new_equipo->save();
     }
 
+    // public function editEquipo(testController $request, $slug)
+    // public function editEquipo(testController $request, $id)
+    // {
+    //     // $registro = new equipos;
+    //     // $registro = equipos::whereSlug($slug)->firstOrFail();
+    //     $registro = equipos::whereSlug($id)->firstOrFail();
+    //     $registro->titulo = $request->get('titulo');
+    //     $registro->contenido = $request->get('contenido');
+
+    //     if ($request->get('status') != null) {
+    //         $registro->status = 0;
+    //     } else {
+    //         $registro->status = 1;
+    //     }
+    //     $registro->save();
+    //     return redirect(action('testController@edit', $registro->slug))->with('status', 'El mensaje ' . $slug . ' ha sido actualizado');
+    // }
+
     public function createEquipo(Request $request)
     {
         $campos = $request;
@@ -59,7 +77,7 @@ class testController extends Controller
         // $valores = explode(' - ', $campos);
 
         $new_equipo = new equipos;
-        
+
         // $new_equipo->fill([
         //     'codigo' => $request->codigo,
         //     'nomina' => $request->nomina,
@@ -111,8 +129,9 @@ class testController extends Controller
         $new_equipo->no_factura = $campos->no_factura;
         $new_equipo->proveedor = $campos->proveedor;
         $new_equipo->estado = $campos->estado;
-        
+
         $new_equipo->save();
+        // $new_equipo->update();
 
         return response()->json(
             [

@@ -36,3 +36,6 @@ Route::post('/save', [App\Http\Controllers\testController::class, 'createEquipo'
 // Route::post('/save', [App\Http\Controllers\testController::class, 'saveEquipo']);
 Route::post('/equipos/create', [App\Http\Controllers\testController::class, 'createEquipo']);
 Route::get('/equipos/get', [App\Http\Controllers\testController::class, 'createEquipo']);
+
+// Route::post('/editar/{slug}', [App\Http\Controllers\testController::class, 'editEquipo']);
+// Route::post('/editar/{id}', [App\Http\Controllers\testController::class, 'editEquipo']);
