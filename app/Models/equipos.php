@@ -13,7 +13,7 @@ class equipos extends Model
     protected $table = "equipos";
 
     protected $fillable = [
-        // 'id',
+        'id',
         'codigo',
         'nomina',
         'nombre',
