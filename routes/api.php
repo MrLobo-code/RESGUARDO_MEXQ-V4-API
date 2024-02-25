@@ -38,3 +38,5 @@ Route::post('/equipos/create', [App\Http\Controllers\testController::class, 'cre
 Route::get('/equipos/get', [App\Http\Controllers\testController::class, 'createEquipo']);
 
 Route::put('/update/{id}', [App\Http\Controllers\testController::class, 'updateEquipo']);
+
+Route::delete('/equipos/delete/{id}', [App\Http\Controllers\testController::class, 'deleteEquipo']);

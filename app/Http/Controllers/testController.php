@@ -82,6 +82,35 @@ class testController extends Controller
         );
     }
 
+    public function deleteEquipo(Request $request, $id)
+    {
+        $equipo = equipos::find($id);
+
+        // $equipo->id =         $request->input('id'); 
+
+        // $equipo->codigo =     $request->input('codigo');
+        // $equipo->nomina =     $request->input('nomina');
+        // $equipo->nombre =     $request->input('nombre');
+        // $equipo->sucursal =   $request->input('sucursal');
+        // $equipo->area =       $request->input('area');
+        // $equipo->marca =      $request->input('marca');
+        // $equipo->modelo =     $request->input('modelo');
+        // $equipo->no_serie =   $request->input('no_serie');
+        // $equipo->fecha =      $request->input('fecha');
+        // $equipo->no_factura = $request->input('no_factura');
+        // $equipo->proveedor =  $request->input('proveedor');
+        // $equipo->estado =     $request->input('estado');
+
+        $equipo->delete();
+
+        return response()->json(
+            [
+                'message' => 'Registro eliminado con éxito!!!',
+            ],
+            200
+        );
+    }
+
     public function createEquipo(Request $request)
     {
         $campos = $request;
