@@ -4,6 +4,7 @@ use App\Models\equipos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
+use App\Http\Controllers\SmartphonesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,15 +29,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return response()->json($equipos);
 // });
 Route::get('/json/equipos', function () {
-    $newEquipo = new testController; 
+    $newEquipo = new testController;
     return $newEquipo->equipos();
 });
-
-Route::post('/save', [App\Http\Controllers\testController::class, 'createEquipo']);
-// Route::post('/save', [App\Http\Controllers\testController::class, 'saveEquipo']);
-Route::post('/equipos/create', [App\Http\Controllers\testController::class, 'createEquipo']);
 Route::get('/equipos/get', [App\Http\Controllers\testController::class, 'createEquipo']);
-
+Route::post('/save', [App\Http\Controllers\testController::class, 'createEquipo']);
+Route::post('/equipos/create', [App\Http\Controllers\testController::class, 'createEquipo']);
 Route::put('/update/{id}', [App\Http\Controllers\testController::class, 'updateEquipo']);
-
 Route::delete('/equipos/delete/{id}', [App\Http\Controllers\testController::class, 'deleteEquipo']);
+
+
+Route::get('/json/smartphones', function () {
+    $smartphones = new SmartphonesController;
+    return $smartphones->getSmartphones();
+});
+Route::post('/smartphones/create', [App\Http\Controllers\SmartphonesController::class, 'createSmartphone']);
+Route::put('/smartphones/update/{id}', [App\Http\Controllers\SmartphonesController::class, 'updateSmartphone']);
+Route::delete('/smartphones/delete/{id}', [App\Http\Controllers\SmartphonesController::class, 'deleteSmartphone']);
