@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\SmartphonesController;
+use App\Http\Controllers\googleAccountsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +47,25 @@ Route::get('/json/smartphones', function () {
 Route::post('/smartphones/create', [App\Http\Controllers\SmartphonesController::class, 'createSmartphone']);
 Route::put('/smartphones/update/{id}', [App\Http\Controllers\SmartphonesController::class, 'updateSmartphone']);
 Route::delete('/smartphones/delete/{id}', [App\Http\Controllers\SmartphonesController::class, 'deleteSmartphone']);
+
+
+Route::get('/json/google_accounts', function () {
+    $googleAc = new googleAccountsController;
+    return $googleAc->getGoogleAC();
+});
+// Route::get('/google_accounts/search', function (Request $request) {
+//     try {
+
+//         $validated = $request->validate([
+//             "searchValue" => "required"
+//         ]);
+
+//         $googleAc = new googleAccountsController;
+//         return $googleAc->findGoogleAC($validated["searchValue"]);
+//     } catch (\Exception $e) {
+//         return response()->json($e, 500);
+//     }
+// });
+Route::post('/google_accounts/create', [App\Http\Controllers\googleAccountsController::class, 'createGoogleAC']);
+Route::put('/google_accounts/update/{id}', [App\Http\Controllers\googleAccountsController::class, 'updateGoogleAC']);
+Route::delete('/google_accounts/delete/{id}', [App\Http\Controllers\googleAccountsController::class, 'deleteGoogleAC']);

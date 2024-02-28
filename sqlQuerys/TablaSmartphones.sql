@@ -18,3 +18,13 @@ Create table smartphones (
 );
 
 select  * from smartphones
+
+Create table google_accounts (
+	id int identity(1,1) Primary key,
+	sucursal varchar(255),
+	cuenta varchar(255) not null,
+    clave varchar(255) not null,
+    fecha_actualizacion varchar(255),
+);
+
+select  * from google_accounts
