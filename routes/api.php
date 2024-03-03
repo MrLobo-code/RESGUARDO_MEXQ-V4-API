@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\SmartphonesController;
 use App\Http\Controllers\googleAccountsController;
+use App\Http\Controllers\usersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,12 @@ Route::get('/json/google_accounts', function () {
 //         return response()->json($e, 500);
 //     }
 // });
+
 Route::post('/google_accounts/create', [App\Http\Controllers\googleAccountsController::class, 'createGoogleAC']);
 Route::put('/google_accounts/update/{id}', [App\Http\Controllers\googleAccountsController::class, 'updateGoogleAC']);
 Route::delete('/google_accounts/delete/{id}', [App\Http\Controllers\googleAccountsController::class, 'deleteGoogleAC']);
+
+Route::get('/json/users', function () {
+    $googleAc = new usersController;
+    return $googleAc->getUsers();
+});

@@ -28,3 +28,14 @@ Create table google_accounts (
 );
 
 select  * from google_accounts
+
+create table admin_users (
+    id int identity(1,1) Primary key,
+	username varchar(255) not null,
+	pass varchar(255) not null,
+);
+
+select * from admin_users;
+
+INSERT INTO admin_users (username, pass) VALUES ('Oscar', 'P@ssw0rd');
+INSERT INTO admin_users (username, pass) VALUES ('Yola', 'P@ssw0rd01');
