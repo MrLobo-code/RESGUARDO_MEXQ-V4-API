@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Admin_user extends Model {
+class admin_user extends Model {
     use HasFactory;
     protected $table = "admin_users";
     protected $filltable = [
-        'id',
         'username',
-        'pass'
+        'userpassword'
     ];
 
     public $timestamps = false;

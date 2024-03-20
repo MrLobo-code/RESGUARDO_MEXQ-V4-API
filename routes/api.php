@@ -23,13 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::get('/jokes', 'JokeController@getRandomJoke');
-// Route::get('/json/equipos', function () {
-//     $equipos = App\Models\equipos::all();
-//     //  dd("Hola mundo"); 
-//      //dd($equipos); /*Aqui esta linea me ayuda a ver exactamente que es lo que se está retornando a mi app antes de que se retorne*/
-//     return response()->json($equipos);
-// });
 Route::get('/json/equipos', function () {
     $newEquipo = new testController;
     return $newEquipo->equipos();
@@ -72,7 +65,7 @@ Route::post('/google_accounts/create', [App\Http\Controllers\googleAccountsContr
 Route::put('/google_accounts/update/{id}', [App\Http\Controllers\googleAccountsController::class, 'updateGoogleAC']);
 Route::delete('/google_accounts/delete/{id}', [App\Http\Controllers\googleAccountsController::class, 'deleteGoogleAC']);
 
-Route::get('/json/users', function () {
-    $googleAc = new usersController;
-    return $googleAc->getUsers();
-});
+// Route::get('/login', [App\Http\Controllers\usersController::class, 'userAuth']);
+
+Route::post('/register', [App\Http\Controllers\usersController::class, 'createUser']);
+Route::post('/login', [App\Http\Controllers\usersController::class, 'userAuth']);
