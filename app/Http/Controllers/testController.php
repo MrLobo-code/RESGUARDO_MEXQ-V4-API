@@ -130,6 +130,7 @@ class testController extends Controller
         $new_equipo->no_factura = $campos->no_factura;
         $new_equipo->proveedor = $campos->proveedor;
         $new_equipo->estado = $campos->estado;
+        $new_equipo->notas = $campos->notas;
 
         $new_equipo->save();
 

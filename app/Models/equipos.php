@@ -25,7 +25,8 @@ class equipos extends Model
         'fecha',
         'no_factura',
         'proveedor',
-        'estado'
+        'estado',
+        'notas'
     ];
 
     public $timestamps = false;

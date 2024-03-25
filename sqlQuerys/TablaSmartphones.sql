@@ -17,10 +17,11 @@ fecha varchar(255) not null,
 no_factura varchar(255) not null,
 proveedor varchar(255) not null,
 estado varchar(255) not null,
+notas varchar(max)
 );
 
-INSERT INTO equipos (codigo, nomina, nombre, sucursal, area, marca, modelo, no_serie, fecha, no_factura, proveedor, estado)
-VALUES ('Oscar', 35653, 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj');
+INSERT INTO equipos (codigo, nomina, nombre, sucursal, area, marca, modelo, no_serie, fecha, no_factura, proveedor, estado, notas)
+VALUES ('Oscar', 35653, 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'rhyj', 'Split the text into chunks that your database can actually handle. And, put the split up text in another table. Use the id from the text_chunk table as text_chunk_id in your original table. You might want another column in your table to keep text that fits within your largest text data type.');
 
 drop table smartphones
 
