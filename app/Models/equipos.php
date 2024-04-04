@@ -10,14 +10,19 @@ class equipos extends Model
 {
     use HasFactory;
 
-    protected $table = "equipos";
+    // protected $table = "equipos";
+    protected $table = "equiposDeComputo";
 
     protected $fillable = [
-        'id',
-        'codigo',
-        'nomina',
+        // 'id',
         'nombre',
+        'nomina',
+        'num_tel',
+        'puesto',
+        'email',
         'sucursal',
+        'depto',
+        'codigo',
         'area',
         'marca',
         'modelo',
@@ -26,7 +31,7 @@ class equipos extends Model
         'no_factura',
         'proveedor',
         'estado',
-        'notas'
+        'notas',
     ];
 
     public $timestamps = false;

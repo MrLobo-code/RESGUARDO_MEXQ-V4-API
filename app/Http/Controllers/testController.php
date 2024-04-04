@@ -118,10 +118,14 @@ class testController extends Controller
         // $valores = explode(' - ', $campos);
 
         $new_equipo = new equipos;
-        $new_equipo->codigo = $campos->codigo;
-        $new_equipo->nomina = $campos->nomina;
         $new_equipo->nombre = $campos->nombre;
+        $new_equipo->nomina = $campos->nomina;
+        $new_equipo->num_tel = $campos->num_tel;
+        $new_equipo->puesto = $campos->puesto;
+        $new_equipo->email = $campos->email;
         $new_equipo->sucursal = $campos->sucursal;
+        $new_equipo->depto = $campos->depto;
+        $new_equipo->codigo = $campos->codigo;
         $new_equipo->area = $campos->area;
         $new_equipo->marca = $campos->marca;
         $new_equipo->modelo = $campos->modelo;

@@ -13,7 +13,8 @@ class googleAccount extends Model {
         'sucursal',
         'cuenta',
         'clave',
-        'fecha_actualizacion'
+        'fecha_actualizacion',
+        'notas'
     ];
 
     public $timestamps = false;

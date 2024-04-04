@@ -28,6 +28,7 @@ class googleAccountsController extends Controller
         $newAccount->cuenta = $campos->cuenta;
         $newAccount->clave = $campos->clave;
         $newAccount->fecha_actualizacion = $campos->fecha_actualizacion;
+        $newAccount->notas = $campos->notas;
 
         $newAccount->save();
 
@@ -47,6 +48,7 @@ class googleAccountsController extends Controller
         $newAccount->cuenta =               $request->input('cuenta');
         $newAccount->clave =                $request->input('clave');
         $newAccount->fecha_actualizacion =  $request->input('fecha_actualizacion');
+        $newAccount->notas =                $request->input('notas');
 
         $newAccount->save();
 
