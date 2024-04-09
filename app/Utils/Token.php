@@ -2,7 +2,9 @@
 
 namespace App\Utils;
 
+use Exception;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class token extends JWT
 {
@@ -21,7 +23,6 @@ class token extends JWT
             'exp' => time() + (24 * 60 * 60),
             'credentials' => [
                 'employee_name' => $userName,
-                'payroll_number' => $password
             ]
         ];
 
@@ -32,6 +33,31 @@ class token extends JWT
         }
 
         return $jwt_token;
-        
+    }
+
+    public static function validateToken($token)
+    {
+        try {
+            if (!$token) {
+                return false;
+            }
+
+            JWT::$leeway = 60;
+            $decoded = JWT::decode($token, new Key(self::$key, self::$encryption));
+
+            if (time() > $decoded->exp) {
+                return false;
+            }
+
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public static function getDataToken($token)
+    {
+        $decoded = JWT::decode($token, new Key(self::$key, self::$encryption));
+        return $decoded->credentials;
     }
 }

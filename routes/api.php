@@ -47,25 +47,12 @@ Route::get('/json/google_accounts', function () {
     $googleAc = new googleAccountsController;
     return $googleAc->getGoogleAC();
 });
-// Route::get('/google_accounts/search', function (Request $request) {
-//     try {
-
-//         $validated = $request->validate([
-//             "searchValue" => "required"
-//         ]);
-
-//         $googleAc = new googleAccountsController;
-//         return $googleAc->findGoogleAC($validated["searchValue"]);
-//     } catch (\Exception $e) {
-//         return response()->json($e, 500);
-//     }
-// });
 
 Route::post('/google_accounts/create', [App\Http\Controllers\googleAccountsController::class, 'createGoogleAC']);
 Route::put('/google_accounts/update/{id}', [App\Http\Controllers\googleAccountsController::class, 'updateGoogleAC']);
 Route::delete('/google_accounts/delete/{id}', [App\Http\Controllers\googleAccountsController::class, 'deleteGoogleAC']);
 
-// Route::get('/login', [App\Http\Controllers\usersController::class, 'userAuth']);
-
 Route::post('/register', [App\Http\Controllers\usersController::class, 'createUser']);
 Route::post('/login', [App\Http\Controllers\usersController::class, 'userAuth']);
+Route::get('/validateToken', App\Http\Controllers\validateTokenController::class);
+

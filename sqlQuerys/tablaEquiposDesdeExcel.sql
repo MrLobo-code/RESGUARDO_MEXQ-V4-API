@@ -46,7 +46,7 @@ accion varchar(255) null
 GO
 
 
-select * from equiposDeComputo
+select * from equiposDeComputo order by codigo desc
 
 ALTER TABLE equiposDeComputo DROP COLUMN accion;
 ALTER TABLE equiposDeComputo add accion varchar(255) null;
