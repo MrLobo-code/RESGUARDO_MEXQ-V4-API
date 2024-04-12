@@ -56,7 +56,8 @@ class usersController extends Controller
 
             $token = Token::generate($credentials['username'], $credentials['password']);
             return response()->json([
-                'token' => $token
+                'token' => $token,
+                'employee_name' => $credentials["username"]
             ], 201);
 
         } catch (Exception $e) {

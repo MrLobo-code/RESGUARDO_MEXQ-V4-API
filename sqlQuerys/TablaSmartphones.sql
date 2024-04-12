@@ -3,13 +3,13 @@ select * from equipos
 select * from equiposDeComputo
 select *from Sheet0$
 
-select * from equiposDeComputo where codigo = 'MQ399'
+select * from equiposDeComputo where codigo = 'MQ400'
 
 select * from equiposDeComputo where codigo = NULL
 
 delete from equiposDeComputo where codigo = NULL
 
-drop table equiposDeComputo
+drop table equiposDeComputo    
 
 drop table equipos
 
@@ -23,7 +23,7 @@ puesto varchar(255),
 email varchar(255),
 sucursal varchar(255) not null,
 depto varchar(255),
-area varchar(255) not null,+
+area varchar(255) not null,
 marca varchar(255) not null,
 modelo varchar(255) not null,
 no_serie varchar(255) not null,
