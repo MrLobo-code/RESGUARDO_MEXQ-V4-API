@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\equipos;
 use Illuminate\Http\Request;
-use App\Models\equipo;
-use Symfony\Component\Console\Input\Input;
 
 // use Illuminate\Http\Request;
 
@@ -53,27 +51,30 @@ class testController extends Controller
         $new_equipo->save();
     }
 
-    public function updateEquipo(Request $request, $id)
+    public function updateEquipo(Request $request)
     {
-        $equipo = equipos::find($id);
+        $equipo = equipos::find($request->input('id'));
 
-        // $equipo->id =         $request->input('id'); 
-        $equipo->codigo =     $request->input('codigo');
-        $equipo->nomina =     $request->input('nomina');
-        $equipo->nombre =     $request->input('nombre');
-        $equipo->sucursal =   $request->input('sucursal');
-        $equipo->area =       $request->input('area');
-        $equipo->marca =      $request->input('marca');
-        $equipo->modelo =     $request->input('modelo');
-        $equipo->no_serie =   $request->input('no_serie');
-        $equipo->fecha =      $request->input('fecha');
+        $equipo->nombre = $request->input('nombre');
+        $equipo->nomina = $request->input('nomina');
+        $equipo->num_tel = $request->input('num_tel');
+        $equipo->puesto = $request->input('puesto');
+        $equipo->email = $request->input('email');
+        $equipo->sucursal = $request->input('sucursal');
+        $equipo->depto = $request->input('depto');
+        $equipo->codigo = $request->input('codigo');
+        $equipo->area = $request->input('area');
+        $equipo->marca = $request->input('marca');
+        $equipo->modelo = $request->input('modelo');
+        $equipo->no_serie = $request->input('no_serie');
+        $equipo->fecha = $request->input('fecha');
         $equipo->no_factura = $request->input('no_factura');
-        $equipo->proveedor =  $request->input('proveedor');
-        $equipo->estado =     $request->input('estado');
+        $equipo->proveedor = $request->input('proveedor');
+        $equipo->estado = $request->input('estado');
+        $equipo->notas = $request->input('notas');
 
 
         $equipo->save();
-        // return redirect('/update')->with('Succes', 'Equipo actualizado con éxito!!');
         return response()->json(
             [
                 'message' => 'Registro actualizado!!!',
@@ -114,8 +115,6 @@ class testController extends Controller
     public function createEquipo(Request $request)
     {
         $campos = $request;
-        // dd($campos);
-        // $valores = explode(' - ', $campos);
 
         $new_equipo = new equipos;
         $new_equipo->nombre = $campos->nombre;

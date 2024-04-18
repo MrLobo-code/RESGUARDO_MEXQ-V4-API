@@ -14,7 +14,6 @@ class equipos extends Model
     protected $table = "equiposDeComputo";
 
     protected $fillable = [
-        // 'id',
         'nombre',
         'nomina',
         'num_tel',

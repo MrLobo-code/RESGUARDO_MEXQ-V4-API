@@ -3,7 +3,7 @@ select * from equipos
 select * from equiposDeComputo
 select *from Sheet0$
 
-select * from equiposDeComputo where codigo = 'MQ400'
+select * from equiposDeComputo where codigo = 'MQ392'
 
 select * from equiposDeComputo where codigo = NULL
 
@@ -36,8 +36,9 @@ notas varchar(max)
 
 
 CREATE TABLE [dbo].[equiposDeComputo] (
+id int identity(1,1) Primary key,
 [codigo] varchar(255),
-[nomina] int,
+[nomina] bigint,
 [nombre] varchar(255),
 [sucursal] varchar(255),
 [area] varchar(255),
@@ -49,7 +50,7 @@ CREATE TABLE [dbo].[equiposDeComputo] (
 [proveedor] varchar(255),
 [estado] varchar(255),
 [accion] varchar(255),
-[num_tel] int,
+[num_tel] bigint,
 [puesto] varchar(255),
 [email] varchar(255), 
 [depto]  varchar(255),
@@ -97,7 +98,7 @@ drop table google_accounts
 
 select  * from google_accounts
 
-insert into google_accounts (sucursal, cuenta, clave, fecha_actualizacion) value ('rhyj', 'rhyj', 'rhyj', 'rhyj');
+insert into google_accounts (sucursal, cuenta, clave, fecha_actualizacion) value ('rhyj', 'rhyj', 'rhyj', 'rhyj')
 
 create table admin_users (
     id int identity(1,1) Primary key,
@@ -109,9 +110,48 @@ drop table admin_users
 
 select * from admin_users;
 
+delete from admin_users
+
 INSERT INTO admin_users (username, userpassword) VALUES ('Oscar', 'P@ssw0rd');
 INSERT INTO admin_users (username, userpassword) VALUES ('Yola', 'P@ssw0rd01');
+INSERT INTO admin_users (username, userpassword) VALUES ('Mario', 'P@ssw0rd05');
 
 
 use resguardomexqV2
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+select * from smartphones
+
+USE [resguardoMEXQv3]
+GO
+/****** Object:  Table [dbo].[smartphones]    Script Date: 16/04/2024 12:57:21 p. m. ******/
+--SET ANSI_NULLS ON
+--GO
+--SET QUOTED_idENTIFIER ON
+--GO
+
+drop table smartphones
+
+select * from smartphones
+
+CREATE TABLE [dbo].[smartphones](
+	[id] int identity(1,1) Primary key,
+	[codigo] [varchar](255) NULL,
+	[nomina] [BIGINT] NULL,
+	[nombre] [varchar](255) NULL,
+	[sucursal] [varchar](255) NULL,
+	[area] [varchar](255) NULL,
+	[marca] [varchar](255) NULL,
+	[modelo] [varchar](255) NULL,
+	[imei] [BIGINT] NULL,
+	[google_account] [varchar](255) NULL,
+	[num_tel] [BIGINT] NULL,
+	[fecha] [datetime] NULL,
+	[estado] [varchar](255) NULL,
+	[notas] [varchar(255)] NULL,
+	[accion] [varchar](255) NULL
+)
+--) ON [PRIMARY]
+--GO
+
+select * from smartphones

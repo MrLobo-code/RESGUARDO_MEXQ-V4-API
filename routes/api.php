@@ -1,58 +1,28 @@
 <?php
 
-use App\Models\equipos;
-use Illuminate\Http\Request;
+use App\Http\Middleware\EnsureTokenIsValid;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\SmartphonesController;
 use App\Http\Controllers\googleAccountsController;
-use App\Http\Controllers\usersController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('/json/equipos', function () {
-    $newEquipo = new testController;
-    return $newEquipo->equipos();
-});
-Route::get('/equipos/get', [App\Http\Controllers\testController::class, 'createEquipo']);
-Route::post('/save', [App\Http\Controllers\testController::class, 'createEquipo']);
-Route::post('/equipos/create', [App\Http\Controllers\testController::class, 'createEquipo']);
-Route::put('/update/{id}', [App\Http\Controllers\testController::class, 'updateEquipo']);
-Route::delete('/equipos/delete/{id}', [App\Http\Controllers\testController::class, 'deleteEquipo']);
-
-
-Route::get('/json/smartphones', function () {
-    $smartphones = new SmartphonesController;
-    return $smartphones->getSmartphones();
-});
-Route::post('/smartphones/create', [App\Http\Controllers\SmartphonesController::class, 'createSmartphone']);
-Route::put('/smartphones/update/{id}', [App\Http\Controllers\SmartphonesController::class, 'updateSmartphone']);
-Route::delete('/smartphones/delete/{id}', [App\Http\Controllers\SmartphonesController::class, 'deleteSmartphone']);
-
-
-Route::get('/json/google_accounts', function () {
-    $googleAc = new googleAccountsController;
-    return $googleAc->getGoogleAC();
-});
-
-Route::post('/google_accounts/create', [App\Http\Controllers\googleAccountsController::class, 'createGoogleAC']);
-Route::put('/google_accounts/update/{id}', [App\Http\Controllers\googleAccountsController::class, 'updateGoogleAC']);
-Route::delete('/google_accounts/delete/{id}', [App\Http\Controllers\googleAccountsController::class, 'deleteGoogleAC']);
-
-Route::post('/register', [App\Http\Controllers\usersController::class, 'createUser']);
 Route::post('/login', [App\Http\Controllers\usersController::class, 'userAuth']);
 Route::get('/validateToken', App\Http\Controllers\validateTokenController::class);
 
+Route::middleware([EnsureTokenIsValid::class])->group(function () {
+    Route::get('/json/equipos', function () { $newEquipo = new testController;return $newEquipo->equipos(); });
+    Route::get('/equipos/get', [App\Http\Controllers\testController::class, 'createEquipo']);
+    Route::post('/save', [App\Http\Controllers\testController::class, 'createEquipo']);
+    Route::post('/equipos/create', [App\Http\Controllers\testController::class, 'createEquipo']);
+    Route::post('/update', [App\Http\Controllers\testController::class, 'updateEquipo']);
+    Route::get('/equipos/delete/{id}', [App\Http\Controllers\testController::class, 'deleteEquipo']);
+    Route::get('/json/smartphones', function () { $smartphones = new SmartphonesController; return $smartphones->getSmartphones(); });
+    Route::post('/smartphones/create', [App\Http\Controllers\SmartphonesController::class, 'createSmartphone']);
+    Route::post('/smartphones/update/{id}', [App\Http\Controllers\SmartphonesController::class, 'updateSmartphone']);
+    Route::get('/smartphones/delete/{id}', [App\Http\Controllers\SmartphonesController::class, 'deleteSmartphone']);
+    Route::get('/json/google_accounts', function () { $googleAc = new googleAccountsController; return $googleAc->getGoogleAC(); });
+    Route::post('/google_accounts/create', [App\Http\Controllers\googleAccountsController::class, 'createGoogleAC']);
+    Route::post('/google_accounts/update/{id}', [App\Http\Controllers\googleAccountsController::class, 'updateGoogleAC']);
+    Route::get('/google_accounts/delete/{id}', [App\Http\Controllers\googleAccountsController::class, 'deleteGoogleAC']);
+    Route::post('/register', [App\Http\Controllers\usersController::class, 'createUser']);
+});

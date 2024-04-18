@@ -18,10 +18,11 @@ class Smartphone extends Model {
         'marca',
         'modelo',
         'imei',
-        'cuenta_google',
-        'numero_tel',
+        'google_account',
+        'num_tel',
         'fecha',
-        'estado'
+        'estado',
+        'notas'
     ];
 
     public $timestamps = false;
