@@ -1,7 +1,7 @@
 use resguardoMEXQv3
 select * from equipos
 select * from equiposDeComputo
-select *from Sheet0$
+select * from Sheet0$
 
 select * from equiposDeComputo where codigo = 'MQ392'
 
@@ -96,7 +96,7 @@ Create table google_accounts (
 
 drop table google_accounts
 
-select  * from google_accounts
+select * from google_accounts
 
 insert into google_accounts (sucursal, cuenta, clave, fecha_actualizacion) value ('rhyj', 'rhyj', 'rhyj', 'rhyj')
 

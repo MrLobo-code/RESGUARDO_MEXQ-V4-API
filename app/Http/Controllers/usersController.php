@@ -50,14 +50,18 @@ class usersController extends Controller
 
             if (!$userExist) {
                 return response()->json([
-                    'response' => 'Invalid username or password'
+                    // 'response' => 'Invalid username or password'
+                    'message' => 'Invalid username or password'
                 ], 401); // Unauthorized status code 
             }
 
             $token = Token::generate($credentials['username'], $credentials['password']);
             return response()->json([
                 'token' => $token,
-                'employee_name' => $credentials["username"]
+                'employee_name' => $credentials["username"],
+                // 'message' => 'Entró con éxito!!!'
+                'message' => 'Bienvenid@ ' . $credentials["username"] . "!!!"
+
             ], 201);
 
         } catch (Exception $e) {
