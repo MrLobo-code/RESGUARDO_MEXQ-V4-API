@@ -22,7 +22,10 @@ id int identity(1,1) Primary key,
 [puesto] varchar(255),
 [email] varchar(255), 
 [depto]  varchar(255),
-[notas] varchar(255)
+--[notas] varchar(1000)
+--[notas] varbinary(255)
+--[notas] varbinary(255)
+[notas] text
 )
 -- alter table equiposDeComputo add id int identity(1,1) Primary key
 
