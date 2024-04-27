@@ -8,6 +8,8 @@ use App\Http\Controllers\googleAccountsController;
 
 Route::post('/login', [App\Http\Controllers\usersController::class, 'userAuth']);
 Route::get('/validateToken', App\Http\Controllers\validateTokenController::class);
+// Route::get('/equipment_details/{id}', [App\Http\Controllers\testController::class, 'equipment_details']);
+Route::get('/equipment_details/{id}', [App\Http\Controllers\testController::class, 'equipment_details']);
 
 Route::middleware([EnsureTokenIsValid::class])->group(function () {
     Route::get('/json/equipos', function () { $newEquipo = new testController;return $newEquipo->equipos(); });

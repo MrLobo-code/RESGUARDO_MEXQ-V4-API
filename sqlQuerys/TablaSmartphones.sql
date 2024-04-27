@@ -3,7 +3,7 @@ select * from equipos
 select * from equiposDeComputo
 select * from Sheet0$
 
-select * from equiposDeComputo where codigo = 'MQ392'
+select * from equiposDeComputo where id = '2'
 
 select * from equiposDeComputo where codigo = NULL
 

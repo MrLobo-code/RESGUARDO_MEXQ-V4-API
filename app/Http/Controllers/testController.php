@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\equipos;
 use Illuminate\Http\Request;
-
-// use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class testController extends Controller
 {
@@ -13,6 +12,27 @@ class testController extends Controller
     {
         $equipos = equipos::all();
         return response()->json($equipos, 200);
+    }
+    public function equipment_details(Request $request)
+    {
+        try {
+            // dd($request);
+            // $pc = equipos::find($request->input('id'));
+
+            // $pc = DB::table('equiposDeComputo')
+            // ->where('id', $request->input('id'))
+            // ->first();
+
+            $pc = DB::table('equiposDeComputo')
+                ->where('id', $request->segment(3)) //El método segment(3) extraerá el segmento de la URL correspondiente al ID del equipo.
+                ->first();
+            // dd($pc);
+
+
+            return response()->json($pc, 200);
+        } catch (\Exception $e) {
+            return response()->json(['Error' => 'ERROR!!!'], 404);
+        }
     }
     // public function saveEquipo()
     // {
