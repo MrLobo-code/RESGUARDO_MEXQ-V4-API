@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Card;
 use App\Models\equipos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class testController extends Controller
 {
@@ -16,41 +18,15 @@ class testController extends Controller
     public function equipment_details(Request $request)
     {
         try {
-            // dd($request);
-            // $pc = equipos::find($request->input('id'));
-
-            // $pc = DB::table('equiposDeComputo')
-            // ->where('id', $request->input('id'))
-            // ->first();
 
             $pc = DB::table('equiposDeComputo')
                 ->where('id', $request->segment(3)) //El método segment(3) extraerá el segmento de la URL correspondiente al ID del equipo.
                 ->first();
-            // dd($pc);
-
-
             return response()->json($pc, 200);
         } catch (\Exception $e) {
             return response()->json(['Error' => 'ERROR!!!'], 404);
         }
     }
-    // public function saveEquipo()
-    // {
-    //     $new_equipo = new equipos;
-    //     $new_equipo->codigo = "2314";
-    //     $new_equipo->nomina = "wasfhsrdhjdtu";
-    //     $new_equipo->nombre = "345656";
-    //     $new_equipo->sucursal = "wasfhsrdhjdtu";
-    //     $new_equipo->area = "3565";
-    //     $new_equipo->marca = "wasfhsrdhjdtu";
-    //     $new_equipo->modelo = "35757";
-    //     $new_equipo->no_serie = "wasfhsrdhjdtu";
-    //     $new_equipo->fecha = "35735";
-    //     $new_equipo->no_factura = "wasfhsrdhjdtu";
-    //     $new_equipo->proveedor = "45678";
-    //     $new_equipo->estado = "wasfhsrdhjdtu";
-    //     $new_equipo->save();
-    // }
     public function saveEquipo()
     {
         $new_equipo = new equipos;
@@ -107,21 +83,6 @@ class testController extends Controller
     {
         $equipo = equipos::find($id);
 
-        // $equipo->id =         $request->input('id'); 
-
-        // $equipo->codigo =     $request->input('codigo');
-        // $equipo->nomina =     $request->input('nomina');
-        // $equipo->nombre =     $request->input('nombre');
-        // $equipo->sucursal =   $request->input('sucursal');
-        // $equipo->area =       $request->input('area');
-        // $equipo->marca =      $request->input('marca');
-        // $equipo->modelo =     $request->input('modelo');
-        // $equipo->no_serie =   $request->input('no_serie');
-        // $equipo->fecha =      $request->input('fecha');
-        // $equipo->no_factura = $request->input('no_factura');
-        // $equipo->proveedor =  $request->input('proveedor');
-        // $equipo->estado =     $request->input('estado');
-
         $equipo->delete();
 
         return response()->json(
@@ -163,5 +124,54 @@ class testController extends Controller
             ],
             200
         );
+    }
+
+    public function uploadCard(Request $request)
+    {
+        // dd($request->file('FileName'));
+        // $name = $request->file('FileName')->getClientOriginalName();
+        // $path = $request->file('FileName')->store('tests');
+
+        // $save = new Card;
+
+        // $save->FileName = $name;
+        // $save->path = $path;
+
+        // $save->save();
+
+        // return response()->json(
+        //     [
+        //         'message' => 'Documento Guardado??',
+        //     ],
+        //     200
+        // );
+
+        try {
+            if ($request->hasFile('FileName')) {
+                $file = $request->file('FileName');
+                $fileName = $file->getClientOriginalName();
+
+                $fileName = pathinfo($fileName, PATHINFO_FILENAME);
+                $nameFile = str_replace(" ", "_", $fileName);
+
+                $extension = $file->getClientOriginalExtension();
+
+                $picture =  date('His') . '-' . $nameFile . '.' . $extension;
+                // $file->move(public_path())
+                $file->move(public_path('tests'), $picture);
+
+                return response()->json([
+                    "message" => "Archivo guardado",
+                    "message2" => $picture
+                ]);
+            }
+            else {
+                return response()->json([
+                    "message" => "Error al guardar!!!"
+                ], 404); 
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Error'], 404);
+        }
     }
 }
