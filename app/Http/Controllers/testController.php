@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Card;
 use App\Models\equipos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class testController extends Controller
 {
@@ -128,24 +126,6 @@ class testController extends Controller
 
     public function uploadCard(Request $request)
     {
-        // dd($request->file('FileName'));
-        // $name = $request->file('FileName')->getClientOriginalName();
-        // $path = $request->file('FileName')->store('tests');
-
-        // $save = new Card;
-
-        // $save->FileName = $name;
-        // $save->path = $path;
-
-        // $save->save();
-
-        // return response()->json(
-        //     [
-        //         'message' => 'Documento Guardado??',
-        //     ],
-        //     200
-        // );
-
         try {
             if ($request->hasFile('FileName')) {
                 $file = $request->file('FileName');
@@ -157,18 +137,16 @@ class testController extends Controller
                 $extension = $file->getClientOriginalExtension();
 
                 $picture =  date('His') . '-' . $nameFile . '.' . $extension;
-                // $file->move(public_path())
-                $file->move(public_path('tests'), $picture);
+                $file->move(public_path('signedCards'), $picture); //It stores the files in public\signedCards (C:\xampp\htdocs\laravelAPIs\resguardoMEXQ-V4-API\public\signedCards)
 
                 return response()->json([
                     "message" => "Archivo guardado",
                     "message2" => $picture
                 ]);
-            }
-            else {
+            } else {
                 return response()->json([
                     "message" => "Error al guardar!!!"
-                ], 404); 
+                ], 404);
             }
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error'], 404);
